@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "9700903372",
+    "project_id": "comingmsgs",
+    "storage_bucket": "comingmsgs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9700903372:android:0d5f2f7b971695e9407569",
+        "android_client_info": {
+          "package_name": "com.comingmsgs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9700903372-vdf2eer4jpav0tr2j9elndprvi412va9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.comingmsgs",
+            "certificate_hash": "f19b790c173ab0678b0369b691f8f05fa4297487"
+          }
+        },
+        {
+          "client_id": "9700903372-sm56hkgak591do28u1hcguhr7qsosf3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGxeFJ0vjjGxlENB8zkiWSNMgZJzxxVbQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9700903372-sm56hkgak591do28u1hcguhr7qsosf3j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
