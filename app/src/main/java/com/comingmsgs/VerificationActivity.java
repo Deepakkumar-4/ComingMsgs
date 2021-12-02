@@ -30,7 +30,6 @@ public class VerificationActivity extends AppCompatActivity {
 
 
     ActivityVerificationBinding binding;
-
     EditText otp1, otp2, otp3, otp4, otp5, otp6;
     String OTPsent;
     ProgressBar progressBar;
@@ -52,6 +51,7 @@ public class VerificationActivity extends AppCompatActivity {
         otp6 = findViewById(R.id.Otpdigit6);
         progressBar = findViewById(R.id.progress_bar_confirmingOTP);
         resendOTP = findViewById(R.id.ResendOtp);
+        verify = findViewById(R.id.Verify);
 
 
         TextView textView = findViewById(R.id.mobileShow);
@@ -62,28 +62,27 @@ public class VerificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
-                if (!otp1.getText().toString().trim().isEmpty() &&
+                if (    !otp1.getText().toString().trim().isEmpty() &&
                         !otp2.getText().toString().trim().isEmpty() &&
                         !otp3.getText().toString().trim().isEmpty() &&
                         !otp4.getText().toString().trim().isEmpty() &&
                         !otp5.getText().toString().trim().isEmpty() &&
-                        !otp6.getText().toString().trim().isEmpty()) {
-
+                        !otp6.getText().toString().trim().isEmpty()    )
+                {
                     String OtpCode = otp1.getText().toString()+
-                            otp1.getText().toString()+
-                            otp1.getText().toString()+
-                            otp1.getText().toString()+
-                            otp1.getText().toString()+
-                            otp1.getText().toString();
+                                     otp2.getText().toString()+
+                                     otp3.getText().toString()+
+                                     otp4.getText().toString()+
+                                     otp5.getText().toString()+
+                                     otp6.getText().toString();
 
                     if (OTPsent != null)
                     {
                         progressBar.setVisibility(View.VISIBLE);
                         verify.setVisibility(View.INVISIBLE);
 
-                        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(OTPsent,OtpCode);
+                        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider
+                                .getCredential(OTPsent,OtpCode);
 
                         FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -99,7 +98,7 @@ public class VerificationActivity extends AppCompatActivity {
 
                                         }else
                                         {
-                                            Toast.makeText(getApplicationContext(), "Enter the correct OTP", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Enter the correct OTP", Toast.LENGTH_LONG).show();
                                         }
 
 
@@ -153,7 +152,7 @@ public class VerificationActivity extends AppCompatActivity {
                                     .ForceResendingToken forceResendingToken) {
 
                                 OTPsent = newBackEndOtp;
-                                Toast.makeText(VerificationActivity.this, "OTP send Successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(VerificationActivity.this, "OTP sent Successfully", Toast.LENGTH_SHORT).show();
 
                             }
                         }

@@ -59,7 +59,6 @@ public class SignInActivity extends AppCompatActivity {
                                     @Override
                                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
-
                                         progressBar.setVisibility(View.GONE);
                                         Continue.setVisibility(View.VISIBLE);
 
@@ -85,8 +84,6 @@ public class SignInActivity extends AppCompatActivity {
                                         startActivity(intent);
                                     }
                                 }
-
-
                         );
                     } else {
                         Toast.makeText(SignInActivity.this, "Please enter correct phone number", Toast.LENGTH_LONG).show();
