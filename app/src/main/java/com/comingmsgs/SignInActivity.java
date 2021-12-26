@@ -29,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySignInBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+      setContentView(R.layout.activity_sign_in);
         getSupportActionBar().hide();
 
 
