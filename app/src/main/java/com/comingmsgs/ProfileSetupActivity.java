@@ -88,6 +88,8 @@ public class ProfileSetupActivity extends AppCompatActivity {
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void unused) {
+                                                        binding.progressBarProfile.setVisibility(View.VISIBLE);
+                                                        binding.setupProfile.setVisibility(View.INVISIBLE);
                                                         Intent  intent = new Intent(ProfileSetupActivity.this , MainActivity.class);
                                                         startActivity(intent);
                                                         finishAffinity();
