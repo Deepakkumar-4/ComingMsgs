@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.comingmsgs.databinding.ActivitySignInBinding;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -25,12 +26,26 @@ public class SignInActivity extends AppCompatActivity {
     ProgressBar progressBar;
     Button Continue;
 
+    FirebaseAuth auth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySignInBinding.inflate(getLayoutInflater());
-      setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_in);
         getSupportActionBar().hide();
+
+
+        auth = FirebaseAuth.getInstance();
+
+        if(auth.getCurrentUser() != null)
+        {
+            Intent intent = new Intent(SignInActivity.this , MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
 
 
         enterNumber = findViewById(R.id.enterNumber);

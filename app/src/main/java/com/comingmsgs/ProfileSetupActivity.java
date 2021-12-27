@@ -60,6 +60,9 @@ public class ProfileSetupActivity extends AppCompatActivity {
                     return;
                 }
 
+                binding.progressBarProfile.setVisibility(View.VISIBLE);
+                binding.setupProfile.setVisibility(View.INVISIBLE);
+
                 if (selectedImage != null)
                 {
                     StorageReference reference = storage.getReference().child("Profiles").child(auth.getUid());
@@ -84,12 +87,13 @@ public class ProfileSetupActivity extends AppCompatActivity {
 
                                         database.getReference()
                                                 .child("Users")
+                                                .child(uid)  //if this child is nt there then every new user replace previous one and now new user get a child of their uid
                                                 .setValue(user)//if these items get uploaded succesfuly then intent will  run
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void unused) {
-                                                        binding.progressBarProfile.setVisibility(View.VISIBLE);
-                                                        binding.setupProfile.setVisibility(View.INVISIBLE);
+                                                        binding.progressBarProfile.setVisibility(View.INVISIBLE);
+                                                        binding.setupProfile.setVisibility(View.VISIBLE);
                                                         Intent  intent = new Intent(ProfileSetupActivity.this , MainActivity.class);
                                                         startActivity(intent);
                                                         finishAffinity();
@@ -105,6 +109,33 @@ public class ProfileSetupActivity extends AppCompatActivity {
                             }
                         }
                     });
+                }
+                else{
+                    String uid = auth.getUid();
+                    String phone  = auth.getCurrentUser().getPhoneNumber();
+
+                    User user =  new User(uid ,name,phone,"No Image");
+                    // here we get all data that user entered while his login
+
+                    // now time to put it in firebase
+
+                    database.getReference()
+                            .child("Users")
+                            .child(uid)  //if this child is nt there then every new user replace previous one and now new user get a child of their uid
+                            .setValue(user)//if these items get uploaded succesfuly then intent will  run
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    binding.progressBarProfile.setVisibility(View.INVISIBLE);
+                                    binding.setupProfile.setVisibility(View.VISIBLE);
+                                    Intent  intent = new Intent(ProfileSetupActivity.this , MainActivity.class);
+                                    startActivity(intent);
+                                    finishAffinity();
+
+
+                                }
+                            });
+
                 }
 
 

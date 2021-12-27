@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<group>
+    <item android:title="Search"
+        android:id="@+id/Search"
+        android:icon="@drawable/searchicon"
+        app:showAsAction="always"/>  <!-- WE made it show always on top off navigation bar -->
 
-    <item
-        android:title="Settings"
-        android:onClick=""
+    <group>
 
-       />
-</group>
+        <item android:title="Group"
+            android:id="@+id/Groups"/>
+        <item android:title="Invite"
+            android:id="@+id/Invite"/>
+        <item android:title="Settings"
+            android:id="@+id/Setting"/>
+        <item android:title="Logout"
+            android:id="@+id/Logout"/>
+
+
+    </group>
 </menu>
